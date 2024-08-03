@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PROCREATE",
+  title: "R.A.G. with Pinecone",
   description: "Made with ❤️ by COMMAND",
 };
 
