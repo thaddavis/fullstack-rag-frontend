@@ -1,0 +1,12 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: procreate-service
+spec:
+  template:
+    spec:
+      containers:
+        - image: us-central1-docker.pkg.dev/procreate-426616/procreate/procreate:v2
+          env:
+          ports:
+            - containerPort: 3000

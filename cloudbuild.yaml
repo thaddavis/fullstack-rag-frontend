@@ -1,0 +1,17 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-f",
+        "Dockerfile",
+        "-t",
+        "us-central1-docker.pkg.dev/procreate-426616/procreate/procreate:latest",
+        ".",
+      ]
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "push",
+        "us-central1-docker.pkg.dev/procreate-426616/procreate/procreate:latest",
+      ]
