@@ -5,49 +5,42 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 
-import {
-  BiBrain,
-  BiChat,
-  BiMemoryCard,
-  BiQuestionMark,
-  BiRocket,
-  BiWater,
-} from "react-icons/bi";
+import { BiQuestionMark, BiWater } from "react-icons/bi";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navigation = [
+  // {
+  //   name: "Completion Agent",
+  //   href: "/agents/completion",
+  //   icon: BiChat,
+  // },
   {
-    name: "Completion Agent",
-    href: "/agents/completion",
-    icon: BiChat,
-  },
-  {
-    name: "Streaming Agent",
-    href: "/agents/streaming",
+    name: "Agent without R.A.G.",
+    href: "/agents/no-rag",
     icon: BiWater,
   },
+  // {
+  //   name: "Streaming Agent w/ Memory",
+  //   href: "/agents/streaming-with-memory",
+  //   icon: BiMemoryCard,
+  // },
   {
-    name: "Streaming Agent w/ Memory",
-    href: "/agents/streaming-with-memory",
-    icon: BiMemoryCard,
-  },
-  {
-    name: "R.A.G. Agent",
+    name: "Agent with R.A.G.",
     href: "/agents/rag",
     icon: BiQuestionMark,
   },
-  {
-    name: "ReAct Agent",
-    href: "/agents/react",
-    icon: BiBrain,
-  },
-  {
-    name: "Next Level",
-    href: "/agents/next-level",
-    icon: BiRocket,
-  },
+  // {
+  //   name: "ReAct Agent",
+  //   href: "/agents/react",
+  //   icon: BiBrain,
+  // },
+  // {
+  //   name: "Next Level",
+  //   href: "/agents/next-level",
+  //   icon: BiRocket,
+  // },
 ];
 
 function classNames(...classes: string[]) {

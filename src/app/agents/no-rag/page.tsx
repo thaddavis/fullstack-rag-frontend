@@ -3,8 +3,8 @@
 import {
   ChatContext,
   ChatDispatchContext,
-} from "@/app/agents/streaming/ChatContext";
-import { chatReducer, initialState } from "@/app/agents/streaming/ChatReducer";
+} from "@/app/agents/no-rag/ChatContext";
+import { chatReducer, initialState } from "@/app/agents/no-rag/ChatReducer";
 import { Chat as StreamingChat } from "@/components/streaming-chat/chat";
 import { useReducer } from "react";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { ChatContext } from "@/app/agents/streaming/ChatContext";
+import { ChatContext } from "@/app/agents/no-rag/ChatContext";
 import { ChatList } from "@/components/streaming-chat/chat-list";
 import { ChatPanel } from "@/components/streaming-chat/chat-panel";
 import { EmptyScreen } from "@/components/streaming-chat/empty-screen";

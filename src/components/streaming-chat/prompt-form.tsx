@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { ChatDispatchContext } from "@/app/agents/streaming/ChatContext";
+import { ChatDispatchContext } from "@/app/agents/no-rag/ChatContext";
 import { useEnterSubmit } from "@/lib/hooks/use-enter-submit";
 import { nanoid } from "@/lib/utils";
 import { callStreamingAgent } from "@/services/callStreamingAgent";
