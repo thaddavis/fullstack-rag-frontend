@@ -5,7 +5,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 
-import { BiQuestionMark, BiWater } from "react-icons/bi";
+import { BiCheck, BiX } from "react-icons/bi";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -19,7 +19,7 @@ const navigation = [
   {
     name: "Agent without R.A.G.",
     href: "/agents/no-rag",
-    icon: BiWater,
+    icon: BiX,
   },
   // {
   //   name: "Streaming Agent w/ Memory",
@@ -29,7 +29,7 @@ const navigation = [
   {
     name: "Agent with R.A.G.",
     href: "/agents/rag",
-    icon: BiQuestionMark,
+    icon: BiCheck,
   },
   // {
   //   name: "ReAct Agent",
