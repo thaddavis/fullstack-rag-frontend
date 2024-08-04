@@ -1,12 +1,12 @@
 "use client";
 
-import { ChatContext } from "@/app/agents/completion/ChatContext";
-import { ChatPanel } from "@/components/completion-chat/chat-panel";
-import { EmptyScreen } from "@/components/completion-chat/empty-screen";
+import { ChatContext } from "@/app/agents/no-rag/ChatSessionContext";
+import { ChatList } from "@/components/no-rag-chat/chat-list";
+import { ChatPanel } from "@/components/no-rag-chat/chat-panel";
+import { EmptyScreen } from "@/components/no-rag-chat/empty-screen";
 import { useScrollAnchor } from "@/lib/hooks/use-scroll-anchor";
 import { cn } from "@/lib/utils";
 import { useContext, useEffect, useState } from "react";
-import { ChatList } from "./chat-list";
 
 export interface ChatProps extends React.ComponentProps<"div"> {}
 
@@ -39,7 +39,7 @@ export function Chat({ id, className }: ChatProps) {
         )}
       </div>
       <ChatPanel
-        id={id}
+        sessionId={chatState.sessionId}
         input={input}
         setInput={setInput}
         isAtBottom={isAtBottom}

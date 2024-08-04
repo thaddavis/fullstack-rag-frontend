@@ -5,42 +5,27 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 
-import { BiCheck, BiX } from "react-icons/bi";
+import { BiBrain, BiCheck, BiX } from "react-icons/bi";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navigation = [
-  // {
-  //   name: "Completion Agent",
-  //   href: "/agents/completion",
-  //   icon: BiChat,
-  // },
   {
     name: "Agent without R.A.G.",
     href: "/agents/no-rag",
     icon: BiX,
   },
-  // {
-  //   name: "Streaming Agent w/ Memory",
-  //   href: "/agents/streaming-with-memory",
-  //   icon: BiMemoryCard,
-  // },
   {
     name: "Agent with R.A.G.",
     href: "/agents/rag",
     icon: BiCheck,
   },
-  // {
-  //   name: "ReAct Agent",
-  //   href: "/agents/react",
-  //   icon: BiBrain,
-  // },
-  // {
-  //   name: "Next Level",
-  //   href: "/agents/next-level",
-  //   icon: BiRocket,
-  // },
+  {
+    name: "ReAct Agent",
+    href: "/agents/react",
+    icon: BiBrain,
+  },
 ];
 
 function classNames(...classes: string[]) {

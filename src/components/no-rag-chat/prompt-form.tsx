@@ -2,18 +2,20 @@
 
 import * as React from "react";
 
-import { ChatDispatchContext } from "@/app/agents/completion/ChatContext";
+import { ChatDispatchContext } from "@/app/agents/no-rag/ChatSessionContext";
 import { useEnterSubmit } from "@/lib/hooks/use-enter-submit";
 import { nanoid } from "@/lib/utils";
-import { callCompletionAgent } from "@/services/callCompletionAgent";
+import { callStreamingWithMemoryAgent } from "@/services/callStreamingWithMemoryAgent";
 import { useRouter } from "next/navigation";
 
 export function PromptForm({
   input,
   setInput,
+  sessionId,
 }: {
   input: string;
   setInput: (value: string) => void;
+  sessionId: string;
 }) {
   const router = useRouter();
   const { formRef, onKeyDown } = useEnterSubmit();
@@ -26,18 +28,18 @@ export function PromptForm({
       ref={formRef}
       onSubmit={async (e: any) => {
         const humanMessageId = nanoid();
-        const value = input.trim();
+        const prompt = input.trim();
         try {
           e.preventDefault();
 
           setInput("");
-          if (!value) return;
+          if (!prompt) return;
 
           dispatch({
             type: "ADD_MESSAGE",
             payload: {
               id: humanMessageId,
-              content: value,
+              content: prompt,
               role: "human",
               error: null,
             },
@@ -48,22 +50,11 @@ export function PromptForm({
             payload: true,
           });
 
-          const resp = await callCompletionAgent(value);
-          const body = await resp.json();
+          await callStreamingWithMemoryAgent(sessionId, prompt, dispatch);
 
           dispatch({
             type: "SET_COMPLETION_LOADING",
             payload: false,
-          });
-
-          dispatch({
-            type: "ADD_MESSAGE",
-            payload: {
-              id: nanoid(),
-              content: body.completion,
-              role: "ai",
-              error: null,
-            },
           });
         } catch (error) {
           dispatch({
