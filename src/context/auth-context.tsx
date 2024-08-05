@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const logout = () => {
     setUser(null);
     delete axios.defaults.headers.common["Authorization"];
-    router.push("/login");
+    router.push("/");
   };
 
   return (
