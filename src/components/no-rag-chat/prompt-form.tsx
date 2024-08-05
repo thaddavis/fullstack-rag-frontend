@@ -5,7 +5,7 @@ import * as React from "react";
 import { ChatDispatchContext } from "@/app/agents/no-rag/ChatSessionContext";
 import { useEnterSubmit } from "@/lib/hooks/use-enter-submit";
 import { nanoid } from "@/lib/utils";
-import { callStreamingWithMemoryAgent } from "@/services/callStreamingWithMemoryAgent";
+import { callNoRagAgent } from "@/services/callNoRagAgent";
 import { useRouter } from "next/navigation";
 
 export function PromptForm({
@@ -50,7 +50,7 @@ export function PromptForm({
             payload: true,
           });
 
-          await callStreamingWithMemoryAgent(sessionId, prompt, dispatch);
+          await callNoRagAgent(sessionId, prompt, dispatch);
 
           dispatch({
             type: "SET_COMPLETION_LOADING",
