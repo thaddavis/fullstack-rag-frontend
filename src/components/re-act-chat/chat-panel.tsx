@@ -1,4 +1,4 @@
-import { PromptForm } from "@/components/react-chat/prompt-form";
+import { PromptForm } from "@/components/re-act-chat/prompt-form";
 
 export interface ChatPanelProps {
   sessionId: string;

@@ -1,5 +1,5 @@
-import { ChatMessage } from "@/components/react-chat/chat-message";
-import { ToolStatus } from "@/components/react-chat/tool-status";
+import { ChatMessage } from "@/components/re-act-chat/chat-message";
+import { ToolStatus } from "@/components/re-act-chat/tool-status";
 import { Message } from "@/ts/types/Message";
 
 export interface P {

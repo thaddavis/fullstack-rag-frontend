@@ -3,19 +3,17 @@
 import {
   ChatContext,
   ChatDispatchContext,
-} from "@/app/agents/no-rag/ChatSessionContext";
+} from "@/app/dashboard/no-rag/ChatSessionContext";
 import {
   chatReducer,
   initialState,
-} from "@/app/agents/no-rag/ChatSessionReducer";
+} from "@/app/dashboard/no-rag/ChatSessionReducer";
 import { Chat as StreamingWithMemoryChat } from "@/components/no-rag-chat/chat";
 import { nanoid } from "@/lib/utils";
 import { useReducer } from "react";
 
 export default function Page() {
   const [chat, dispatch] = useReducer(chatReducer, initialState);
-
-  const sessionId = nanoid(8);
 
   return (
     <>

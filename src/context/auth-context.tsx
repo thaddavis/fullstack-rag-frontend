@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       ] = `Bearer ${response.data.access_token}`;
       localStorage.setItem("token", response.data.access_token);
       setUser(response.data);
-      router.push("/agents");
+      router.push("/dashboard");
     } catch (error) {
       console.log("Login Failed:", error);
     }

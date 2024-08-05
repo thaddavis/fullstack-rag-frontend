@@ -1,6 +1,6 @@
 "use client";
 
-import { ChatContext } from "@/app/agents/rag/ChatSessionContext";
+import { ChatContext } from "@/app/dashboard/rag/ChatSessionContext";
 import { ChatList } from "@/components/rag-chat/chat-list";
 import { ChatPanel } from "@/components/rag-chat/chat-panel";
 import { EmptyScreen } from "@/components/rag-chat/empty-screen";

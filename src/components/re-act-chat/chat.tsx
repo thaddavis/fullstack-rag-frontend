@@ -1,9 +1,9 @@
 "use client";
 
-import { ChatContext } from "@/app/agents/react/ChatSessionContext";
-import { ChatList } from "@/components/react-chat/chat-list";
-import { ChatPanel } from "@/components/react-chat/chat-panel";
-import { EmptyScreen } from "@/components/react-chat/empty-screen";
+import { ChatContext } from "@/app/dashboard/re-act/ChatSessionContext";
+import { ChatList } from "@/components/re-act-chat/chat-list";
+import { ChatPanel } from "@/components/re-act-chat/chat-panel";
+import { EmptyScreen } from "@/components/re-act-chat/empty-screen";
 import { useScrollAnchor } from "@/lib/hooks/use-scroll-anchor";
 import { cn } from "@/lib/utils";
 import { useContext, useEffect, useState } from "react";

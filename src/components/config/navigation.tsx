@@ -9,27 +9,27 @@ import {
 export const navigation = [
   {
     name: "Agent without R.A.G.",
-    href: "/agents/no-rag",
+    href: "/dashboard/no-rag",
     icon: BiX,
   },
   {
     name: "Agent with R.A.G.",
-    href: "/agents/rag",
+    href: "/dashboard/rag",
     icon: BiCheck,
   },
   {
     name: "ReAct Agent",
-    href: "/agents/react",
+    href: "/dashboard/re-act",
     icon: BiBrain,
   },
   {
     name: "Recommendations",
-    href: "/recommendations",
+    href: "/dashboard/recommendations",
     icon: BiSolidStar,
   },
   {
     name: "Anomaly Detection",
-    href: "/anomaly-detection",
+    href: "/dashboard/anomaly-detection",
     icon: BiSolidAlarmExclamation,
   },
 ];

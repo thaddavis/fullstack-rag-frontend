@@ -1,4 +1,4 @@
-import { Action } from "@/app/agents/react/ChatSessionReducer";
+import { Action } from "@/app/dashboard/re-act/ChatSessionReducer";
 import { nanoid } from "@/lib/utils";
 import React from "react";
 

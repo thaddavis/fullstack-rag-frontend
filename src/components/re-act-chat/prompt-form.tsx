@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { ChatDispatchContext } from "@/app/agents/react/ChatSessionContext";
+import { ChatDispatchContext } from "@/app/dashboard/re-act/ChatSessionContext";
 import { useEnterSubmit } from "@/lib/hooks/use-enter-submit";
 import { nanoid } from "@/lib/utils";
 import { callReActAgent } from "@/services/callReActAgent";

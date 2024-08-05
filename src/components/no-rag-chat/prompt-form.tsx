@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { ChatDispatchContext } from "@/app/agents/no-rag/ChatSessionContext";
+import { ChatDispatchContext } from "@/app/dashboard/no-rag/ChatSessionContext";
 import { useEnterSubmit } from "@/lib/hooks/use-enter-submit";
 import { nanoid } from "@/lib/utils";
 import { callNoRagAgent } from "@/services/callNoRagAgent";

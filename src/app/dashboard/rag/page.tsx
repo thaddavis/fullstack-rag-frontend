@@ -3,12 +3,12 @@
 import {
   ChatContext,
   ChatDispatchContext,
-} from "@/app/agents/react/ChatSessionContext";
+} from "@/app/dashboard/rag/ChatSessionContext";
 import {
   chatReducer,
   initialState,
-} from "@/app/agents/react/ChatSessionReducer";
-import { Chat as ReActChat } from "@/components/react-chat/chat";
+} from "@/app/dashboard/rag/ChatSessionReducer";
+import { Chat as RagChat } from "@/components/rag-chat/chat";
 import { nanoid } from "@/lib/utils";
 import { useReducer } from "react";
 
@@ -21,7 +21,7 @@ export default function Page() {
     <>
       <ChatContext.Provider value={chat}>
         <ChatDispatchContext.Provider value={dispatch}>
-          <ReActChat />
+          <RagChat />
         </ChatDispatchContext.Provider>
       </ChatContext.Provider>
     </>
