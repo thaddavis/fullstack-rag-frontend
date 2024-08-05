@@ -8,7 +8,7 @@ export async function callReActAgent(
   dispatch: React.Dispatch<Action>
 ) {
   const resp = await fetch(
-    `${process.env.NEXT_PUBLIC_AGENT_API_URL}/react-agent/completion`,
+    `${process.env.NEXT_PUBLIC_API_URL}/react-agent/completion`,
     {
       method: "POST",
       headers: {

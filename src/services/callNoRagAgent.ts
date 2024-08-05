@@ -8,7 +8,7 @@ export async function callNoRagAgent(
   dispatch: React.Dispatch<Action>
 ) {
   const resp = await fetch(
-    `${process.env.NEXT_PUBLIC_AGENT_API_URL}/no-rag-agent/completion`,
+    `${process.env.NEXT_PUBLIC_API_URL}/no-rag-agent/completion`,
     {
       method: "POST",
       headers: {
