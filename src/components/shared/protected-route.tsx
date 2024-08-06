@@ -12,7 +12,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   }>(AuthContext);
   const router = useRouter();
 
-  debugger;
+  // debugger;
 
   useEffect(() => {
     if (!user) {

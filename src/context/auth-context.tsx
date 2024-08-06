@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       ] = `Bearer ${response.data.access_token}`;
       localStorage.setItem("token", response.data.access_token);
 
-      debugger;
+      // debugger;
 
       setUser(response.data);
       router.push("/dashboard");

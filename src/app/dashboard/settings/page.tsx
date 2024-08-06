@@ -14,6 +14,7 @@ import {
 import AuthContext from "@/context/auth-context";
 import ProtectedRoute from "@/components/shared/protected-route";
 import axios from "axios";
+import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 export default function Page() {
   const { user, logout } = useContext(AuthContext);
@@ -108,7 +109,14 @@ export default function Page() {
                 className="w-full text-left px-4 py-2 bg-gray-200 hover:bg-gray-300"
                 onClick={() => toggleAccordion("createWorkout")}
               >
-                Create Workout
+                <span className="inline-flex items-center">
+                  Create Workout
+                  {accordionState.createWorkout ? (
+                    <ChevronDownIcon className="ml-2 h-4 w-4" />
+                  ) : (
+                    <ChevronRightIcon className="ml-2  h-4 w-4" />
+                  )}
+                </span>
               </button>
             </h2>
             {accordionState.createWorkout && (
@@ -162,7 +170,16 @@ export default function Page() {
                 className="w-full text-left px-4 py-2 bg-gray-200 hover:bg-gray-300"
                 onClick={() => toggleAccordion("createRoutine")}
               >
-                Create Routine
+                <span className="inline-flex items-center">
+                  Create Routine
+                  {accordionState.createRoutine ? (
+                    <span>
+                      <ChevronDownIcon className="ml-2 h-4 w-4" />
+                    </span>
+                  ) : (
+                    <ChevronRightIcon className="ml-2 h-4 w-4" />
+                  )}
+                </span>
               </button>
             </h2>
             {accordionState.createRoutine && (

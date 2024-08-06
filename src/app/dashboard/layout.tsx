@@ -137,7 +137,6 @@ export default function Layout({
                       <li className="mt-auto">
                         <Link
                           href="/dashboard/settings"
-                          // className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-blue-200 hover:bg-blue-700 hover:text-white"
                           className={classNames(
                             "settings" === current
                               ? "bg-blue-700 text-white"
@@ -155,7 +154,10 @@ export default function Layout({
                       <li className="mt-auto">
                         <span
                           onClick={logout}
-                          className="cursor-pointer group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-blue-200 hover:bg-blue-700 hover:text-white"
+                          className={classNames(
+                            "cursor-pointer text-blue-200 hover:text-white hover:bg-blue-700",
+                            "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+                          )}
                         >
                           <ArrowLeftStartOnRectangleIcon
                             aria-hidden="true"
@@ -222,7 +224,6 @@ export default function Layout({
                 <li className="mt-auto">
                   <Link
                     href="/dashboard/settings"
-                    // className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-blue-200 hover:bg-blue-700 hover:text-white"
                     className={classNames(
                       "settings" === current
                         ? "bg-blue-700 text-white"
@@ -240,7 +241,10 @@ export default function Layout({
                 <li className="mt-auto">
                   <span
                     onClick={logout}
-                    className="cursor-pointer group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-blue-200 hover:bg-blue-700 hover:text-white"
+                    className={classNames(
+                      "cursor-pointer text-blue-200 hover:text-white hover:bg-blue-700",
+                      "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+                    )}
                   >
                     <ArrowLeftStartOnRectangleIcon
                       aria-hidden="true"
