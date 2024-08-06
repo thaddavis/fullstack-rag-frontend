@@ -1,4 +1,4 @@
-import { nanoid } from "@/lib/utils";
+import { uuid } from "uuidv4";
 import { Message } from "@/ts/types/Message";
 
 export type Action =
@@ -77,5 +77,5 @@ export const initialState: {
 } = {
   messages: [],
   completionLoading: false,
-  sessionId: nanoid(8),
+  sessionId: uuid(),
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   Dialog,
   DialogBackdrop,
@@ -12,6 +12,7 @@ import {
   TransitionChild,
 } from "@headlessui/react";
 import {
+  ArrowLeftStartOnRectangleIcon,
   Bars3Icon,
   Cog6ToothIcon,
   XMarkIcon,
@@ -20,11 +21,8 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 import { navigation } from "@/components/config/navigation";
 import { usePathname } from "next/navigation";
-
-const userNavigation = [
-  { name: "Your profile", href: "#" },
-  { name: "Sign out", href: "#" },
-];
+import AuthContext from "@/context/auth-context";
+import { useRouter } from "next/navigation";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -35,9 +33,25 @@ export default function Layout({
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
   const pathname = usePathname();
-
+  const { logout } = useContext(AuthContext);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const userNavigation = [
+    {
+      name: "Settings",
+      onClick: () => {
+        router.push("/dashboard/settings");
+      },
+    },
+    {
+      name: "Sign out",
+      onClick: () => {
+        logout();
+      },
+    },
+  ];
 
   const segments = pathname.split("/");
   const current = segments[segments.length - 1];
@@ -118,7 +132,33 @@ export default function Layout({
                         ))}
                       </ul>
                     </li>
-                    <li className="mt-auto">
+                    <ul className="mt-auto">
+                      <li className="mt-auto">
+                        <a
+                          href="/dashboard/settings"
+                          className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-blue-200 hover:bg-blue-700 hover:text-white"
+                        >
+                          <Cog6ToothIcon
+                            aria-hidden="true"
+                            className="h-6 w-6 shrink-0 text-blue-200 group-hover:text-white"
+                          />
+                          Settings
+                        </a>
+                      </li>
+                      <li className="mt-auto">
+                        <span
+                          onClick={logout}
+                          className="cursor-pointer group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-blue-200 hover:bg-blue-700 hover:text-white"
+                        >
+                          <ArrowLeftStartOnRectangleIcon
+                            aria-hidden="true"
+                            className="h-6 w-6 shrink-0 text-blue-200 group-hover:text-white"
+                          />
+                          Sign out
+                        </span>
+                      </li>
+                    </ul>
+                    {/* <li className="mt-auto">
                       <a
                         href="#"
                         className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-blue-200 hover:bg-blue-700 hover:text-white"
@@ -129,7 +169,7 @@ export default function Layout({
                         />
                         Settings
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
                 </nav>
               </div>
@@ -155,13 +195,6 @@ export default function Layout({
                     {navigation.map((item) => (
                       <li key={item.name}>
                         <a
-                          // href={item.href}
-                          // className={classNames(
-                          //   item.current
-                          //     ? "bg-blue-700 text-white"
-                          //     : "text-blue-200 hover:bg-blue-700 hover:text-white",
-                          //   "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
-                          // )}
                           href={item.href}
                           className={classNames(
                             item.href.split("/")[
@@ -173,13 +206,6 @@ export default function Layout({
                           )}
                         >
                           <item.icon
-                            // aria-hidden="true"
-                            // className={classNames(
-                            //   item.current
-                            //     ? "text-white"
-                            //     : "text-blue-200 group-hover:text-white",
-                            //   "h-6 w-6 shrink-0"
-                            // )}
                             className={classNames(
                               item.href.split("/")[
                                 item.href.split("/").length - 1
@@ -196,9 +222,11 @@ export default function Layout({
                     ))}
                   </ul>
                 </li>
+              </ul>
+              <ul>
                 <li className="mt-auto">
                   <a
-                    href="#"
+                    href="/dashboard/settings"
                     className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-blue-200 hover:bg-blue-700 hover:text-white"
                   >
                     <Cog6ToothIcon
@@ -207,6 +235,18 @@ export default function Layout({
                     />
                     Settings
                   </a>
+                </li>
+                <li className="mt-auto">
+                  <span
+                    onClick={logout}
+                    className="cursor-pointer group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-blue-200 hover:bg-blue-700 hover:text-white"
+                  >
+                    <ArrowLeftStartOnRectangleIcon
+                      aria-hidden="true"
+                      className="h-6 w-6 shrink-0 text-blue-200 group-hover:text-white"
+                    />
+                    Sign out
+                  </span>
                 </li>
               </ul>
             </nav>
@@ -255,12 +295,12 @@ export default function Layout({
                   >
                     {userNavigation.map((item) => (
                       <MenuItem key={item.name}>
-                        <a
-                          href={item.href}
-                          className="block px-3 py-1 text-sm leading-6 text-gray-900 data-[focus]:bg-gray-50"
+                        <span
+                          onClick={item.onClick}
+                          className="cursor-pointer block px-3 py-1 text-sm leading-6 text-gray-900 data-[focus]:bg-gray-50"
                         >
                           {item.name}
-                        </a>
+                        </span>
                       </MenuItem>
                     ))}
                   </MenuItems>

@@ -43,7 +43,8 @@
     "remark-math": "^6.0.0",
     "sonner": "^1.4.41",
     "tailwind-merge": "^2.2.2",
-    "usehooks-ts": "^3.0.2"
+    "usehooks-ts": "^3.0.2",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "@types/node": "^20",
