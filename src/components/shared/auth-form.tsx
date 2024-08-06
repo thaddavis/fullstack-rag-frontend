@@ -14,13 +14,11 @@ export const AuthForm = () => {
   const [registerPassword, setRegisterPassword] = useState("");
 
   const handleLogin = (e: { preventDefault: () => void }) => {
-    debugger;
     e.preventDefault();
     login(username, password);
   };
 
   const handleRegister = async (e: { preventDefault: () => void }) => {
-    debugger;
     e.preventDefault();
     try {
       const response = await axios.post(

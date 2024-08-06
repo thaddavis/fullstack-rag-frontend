@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { createContext, useState } from "react";
+import { toast } from "react-toastify";
 
 const AuthContext = createContext<{
   user: any;
@@ -20,8 +21,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const login = async (username: string, password: string) => {
     try {
-      debugger;
-
       const formData = new FormData();
       formData.append("username", username);
       formData.append("password", password);
@@ -39,7 +38,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setUser(response.data);
       router.push("/dashboard");
     } catch (error) {
-      console.log("Login Failed:", error);
+      toast.error("Login Failed");
+
+      console.error("Login Failed:", error);
     }
   };
 
