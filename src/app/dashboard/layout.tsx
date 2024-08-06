@@ -23,6 +23,7 @@ import { navigation } from "@/components/config/navigation";
 import { usePathname } from "next/navigation";
 import AuthContext from "@/context/auth-context";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -104,7 +105,7 @@ export default function Layout({
                       <ul role="list" className="-mx-2 space-y-1">
                         {navigation.map((item) => (
                           <li key={item.name}>
-                            <a
+                            <Link
                               href={item.href}
                               className={classNames(
                                 item.href.split("/")[
@@ -127,23 +128,29 @@ export default function Layout({
                                 aria-hidden="true"
                               />
                               {item.name}
-                            </a>
+                            </Link>
                           </li>
                         ))}
                       </ul>
                     </li>
                     <ul className="mt-auto">
                       <li className="mt-auto">
-                        <a
+                        <Link
                           href="/dashboard/settings"
-                          className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-blue-200 hover:bg-blue-700 hover:text-white"
+                          // className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-blue-200 hover:bg-blue-700 hover:text-white"
+                          className={classNames(
+                            "settings" === current
+                              ? "bg-blue-700 text-white"
+                              : "text-blue-200 hover:text-white hover:bg-blue-700",
+                            "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+                          )}
                         >
                           <Cog6ToothIcon
                             aria-hidden="true"
                             className="h-6 w-6 shrink-0 text-blue-200 group-hover:text-white"
                           />
                           Settings
-                        </a>
+                        </Link>
                       </li>
                       <li className="mt-auto">
                         <span
@@ -158,18 +165,6 @@ export default function Layout({
                         </span>
                       </li>
                     </ul>
-                    {/* <li className="mt-auto">
-                      <a
-                        href="#"
-                        className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-blue-200 hover:bg-blue-700 hover:text-white"
-                      >
-                        <Cog6ToothIcon
-                          aria-hidden="true"
-                          className="h-6 w-6 shrink-0 text-blue-200 group-hover:text-white"
-                        />
-                        Settings
-                      </a>
-                    </li> */}
                   </ul>
                 </nav>
               </div>
@@ -194,7 +189,7 @@ export default function Layout({
                   <ul role="list" className="-mx-2 space-y-1">
                     {navigation.map((item) => (
                       <li key={item.name}>
-                        <a
+                        <Link
                           href={item.href}
                           className={classNames(
                             item.href.split("/")[
@@ -217,7 +212,7 @@ export default function Layout({
                             aria-hidden="true"
                           />
                           {item.name}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -225,16 +220,22 @@ export default function Layout({
               </ul>
               <ul>
                 <li className="mt-auto">
-                  <a
+                  <Link
                     href="/dashboard/settings"
-                    className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-blue-200 hover:bg-blue-700 hover:text-white"
+                    // className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-blue-200 hover:bg-blue-700 hover:text-white"
+                    className={classNames(
+                      "settings" === current
+                        ? "bg-blue-700 text-white"
+                        : "text-blue-200 hover:text-white hover:bg-blue-700",
+                      "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+                    )}
                   >
                     <Cog6ToothIcon
                       aria-hidden="true"
                       className="h-6 w-6 shrink-0 text-blue-200 group-hover:text-white"
                     />
                     Settings
-                  </a>
+                  </Link>
                 </li>
                 <li className="mt-auto">
                   <span

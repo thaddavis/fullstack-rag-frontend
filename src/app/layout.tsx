@@ -18,6 +18,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  console.log("root app layout");
+
   return (
     <AuthProvider>
       <html lang="en" className="h-full bg-white">

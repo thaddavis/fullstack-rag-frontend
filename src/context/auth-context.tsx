@@ -35,6 +35,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         "Authorization"
       ] = `Bearer ${response.data.access_token}`;
       localStorage.setItem("token", response.data.access_token);
+
+      debugger;
+
       setUser(response.data);
       router.push("/dashboard");
     } catch (error) {
@@ -49,6 +52,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     delete axios.defaults.headers.common["Authorization"];
     router.push("/");
   };
+
+  console.log("auth-context.tsx: user:", user);
 
   return (
     <AuthContext.Provider value={{ user, login, logout }}>

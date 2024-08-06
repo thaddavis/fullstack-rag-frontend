@@ -12,9 +12,11 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   }>(AuthContext);
   const router = useRouter();
 
+  debugger;
+
   useEffect(() => {
     if (!user) {
-      router.push("/login");
+      router.push("/");
     }
   }, [user, router]);
 

@@ -9,7 +9,6 @@ import {
   initialState,
 } from "@/app/dashboard/no-rag/ChatSessionReducer";
 import { Chat as StreamingWithMemoryChat } from "@/components/no-rag-chat/chat";
-import { nanoid } from "@/lib/utils";
 import { useReducer } from "react";
 
 export default function Page() {
