@@ -21,8 +21,10 @@ export default function RootLayout({
   return (
     <AuthProvider>
       <html lang="en" className="h-full bg-white">
-        <body className="h-full">{children}</body>
-        <ToastContainer />
+        <body className="h-full">
+          {children}
+          <ToastContainer />
+        </body>
       </html>
     </AuthProvider>
   );
