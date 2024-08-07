@@ -3,13 +3,14 @@
 import { useContext, useState } from "react";
 import AuthContext from "@/context/auth-context";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const AuthForm = () => {
   const { login } = useContext(AuthContext);
   const [isLogin, setIsLogin] = useState(true);
 
   const [username, setUsername] = useState("tad@cmdlabs.io");
-  const [password, setPassword] = useState("password123");
+  const [password, setPassword] = useState("paparara1423#");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
 
@@ -31,6 +32,7 @@ export const AuthForm = () => {
       login(registerUsername, registerPassword);
     } catch (error) {
       console.error("Failed to register user:", error);
+      toast.error("Registration Failed");
     }
   };
 

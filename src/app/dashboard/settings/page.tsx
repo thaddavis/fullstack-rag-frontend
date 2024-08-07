@@ -14,12 +14,18 @@ import {
 import AuthContext from "@/context/auth-context";
 import ProtectedRoute from "@/components/shared/protected-route";
 import axios from "axios";
-import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import {
+  ChevronDownIcon,
+  ChevronRightIcon,
+  TrashIcon,
+} from "@heroicons/react/24/outline";
+import { deleteRoutine } from "@/services/deleteRoutine";
 
 export default function Page() {
   const { user, logout } = useContext(AuthContext);
   const [workouts, setWorkouts] = useState<any[]>([]);
   const [routines, setRoutines] = useState<any[]>([]);
+  const [fetchCount, setFetchCount] = useState(0); // Used to trigger a re-fetch of data
   const [workoutName, setWorkoutName] = useState("");
   const [workoutDescription, setWorkoutDescription] = useState("");
   const [routineName, setRoutineName] = useState("");
@@ -51,7 +57,7 @@ export default function Page() {
     };
 
     fetchWorkoutsAndRoutines();
-  }, []);
+  }, [fetchCount]);
 
   const handleCreateWorkout = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -257,55 +263,68 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="mt-6">
-          <h3 className="text-xl font-semibold mb-4">Your routines:</h3>
-          <ul className="space-y-4">
-            {routines.map((routine) => (
-              <div className="border rounded-md p-4" key={routine.id}>
-                <h5 className="text-lg font-bold">{routine.name}</h5>
-                <p className="text-sm">{routine.description}</p>
-                <ul className="list-disc list-inside mt-2">
-                  {routine.workouts &&
-                    routine.workouts.map(
-                      (workout: {
-                        id: Key | null | undefined;
-                        name:
-                          | string
-                          | number
-                          | boolean
-                          | ReactElement<
-                              any,
-                              string | JSXElementConstructor<any>
-                            >
-                          | Iterable<ReactNode>
-                          | ReactPortal
-                          | Promise<AwaitedReactNode>
-                          | null
-                          | undefined;
-                        description:
-                          | string
-                          | number
-                          | boolean
-                          | ReactElement<
-                              any,
-                              string | JSXElementConstructor<any>
-                            >
-                          | Iterable<ReactNode>
-                          | ReactPortal
-                          | Promise<AwaitedReactNode>
-                          | null
-                          | undefined;
-                      }) => (
-                        <li key={workout.id}>
-                          {workout.name}: {workout.description}
-                        </li>
-                      )
-                    )}
-                </ul>
-              </div>
-            ))}
-          </ul>
-        </div>
+        {routines.length > 0 && (
+          <div className="mt-6">
+            <h3 className="text-xl font-semibold mb-4">Your routines:</h3>
+            <ul className="space-y-4">
+              {routines.map((routine) => (
+                <div className="border rounded-md p-4" key={routine.id}>
+                  <div className="flex justify-between">
+                    <h5 className="text-lg font-bold">{routine.name}</h5>
+                    <button
+                      className="text-red-500"
+                      onClick={async () => {
+                        await deleteRoutine(routine.id);
+                        setFetchCount(fetchCount + 1);
+                      }}
+                    >
+                      <TrashIcon className="h-5 w-5" />
+                    </button>
+                  </div>
+                  <p className="text-sm">{routine.description}</p>
+                  <ul className="list-disc list-inside mt-2">
+                    {routine.workouts &&
+                      routine.workouts.map(
+                        (workout: {
+                          id: Key | null | undefined;
+                          name:
+                            | string
+                            | number
+                            | boolean
+                            | ReactElement<
+                                any,
+                                string | JSXElementConstructor<any>
+                              >
+                            | Iterable<ReactNode>
+                            | ReactPortal
+                            | Promise<AwaitedReactNode>
+                            | null
+                            | undefined;
+                          description:
+                            | string
+                            | number
+                            | boolean
+                            | ReactElement<
+                                any,
+                                string | JSXElementConstructor<any>
+                              >
+                            | Iterable<ReactNode>
+                            | ReactPortal
+                            | Promise<AwaitedReactNode>
+                            | null
+                            | undefined;
+                        }) => (
+                          <li key={workout.id}>
+                            {workout.name}: {workout.description}
+                          </li>
+                        )
+                      )}
+                  </ul>
+                </div>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </ProtectedRoute>
   );

@@ -105,15 +105,18 @@ export default function Layout({
                       <ul role="list" className="-mx-2 space-y-1">
                         {navigation.map((item) => (
                           <li key={item.name}>
-                            <Link
-                              href={item.href}
+                            <span
+                              onClick={() => {
+                                router.push(item.href);
+                                setSidebarOpen(false);
+                              }}
                               className={classNames(
                                 item.href.split("/")[
                                   item.href.split("/").length - 1
                                 ] === current
                                   ? "bg-blue-700 text-white"
                                   : "text-blue-200 hover:text-white hover:bg-blue-700",
-                                "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+                                "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold cursor-pointer"
                               )}
                             >
                               <item.icon
@@ -128,20 +131,23 @@ export default function Layout({
                                 aria-hidden="true"
                               />
                               {item.name}
-                            </Link>
+                            </span>
                           </li>
                         ))}
                       </ul>
                     </li>
                     <ul className="mt-auto">
                       <li className="mt-auto">
-                        <Link
-                          href="/dashboard/settings"
+                        <span
+                          onClick={() => {
+                            router.push("/dashboard/settings");
+                            setSidebarOpen(false);
+                          }}
                           className={classNames(
                             "settings" === current
                               ? "bg-blue-700 text-white"
                               : "text-blue-200 hover:text-white hover:bg-blue-700",
-                            "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+                            "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold cursor-pointer"
                           )}
                         >
                           <Cog6ToothIcon
@@ -149,7 +155,7 @@ export default function Layout({
                             className="h-6 w-6 shrink-0 text-blue-200 group-hover:text-white"
                           />
                           Settings
-                        </Link>
+                        </span>
                       </li>
                       <li className="mt-auto">
                         <span
