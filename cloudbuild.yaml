@@ -6,12 +6,15 @@ steps:
         "-f",
         "Dockerfile",
         "-t",
-        "us-central1-docker.pkg.dev/procreate-426616/procreate/procreate:latest",
+        "us-central1-docker.pkg.dev/fullstack-rag/fullstack-rag-nextjs/fullstack-rag-nextjs:latest",
         ".",
       ]
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
         "push",
-        "us-central1-docker.pkg.dev/procreate-426616/procreate/procreate:latest",
+        "us-central1-docker.pkg.dev/fullstack-rag/fullstack-rag-nextjs/fullstack-rag-nextjs:latest",
       ]
+  # - name: 'gcr.io/cloud-builders/gcloud'
+  #   script: |
+  #     gcloud run deploy cloudrunservice --image us-docker.pkg.dev/cloudrun/container/hello --region us-central1 --platform managed --allow-unauthenticated
