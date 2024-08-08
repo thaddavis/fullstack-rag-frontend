@@ -78,8 +78,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     router.push("/");
   };
 
-  console.log("auth-context.tsx: user:", user);
-
   return (
     <AuthContext.Provider value={{ user, setUser, login, logout }}>
       {children}
