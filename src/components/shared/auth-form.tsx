@@ -9,8 +9,12 @@ export const AuthForm = () => {
   const { login } = useContext(AuthContext);
   const [isLogin, setIsLogin] = useState(true);
 
-  const [username, setUsername] = useState("tad@cmdlabs.io");
-  const [password, setPassword] = useState("paparara1423#");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  // const [username, setUsername] = useState("tad@cmdlabs.io");
+  // const [password, setPassword] = useState("paparara1423#");
+
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
 
