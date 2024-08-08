@@ -22,13 +22,26 @@ export const AuthForm = () => {
   const handleRegister = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/auth`,
-        {
+      console.log(">>> API URL:", process.env.NEXT_PUBLIC_API_URL);
+
+      // const response = await axios.post(
+      //   `${process.env.NEXT_PUBLIC_API_URL}/auth`,
+      //   {
+      //     username: registerUsername,
+      //     password: registerPassword,
+      //   }
+      // );
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
           username: registerUsername,
           password: registerPassword,
-        }
-      );
+        }),
+      });
+
       login(registerUsername, registerPassword);
     } catch (error) {
       console.error("Failed to register user:", error);
@@ -44,6 +57,7 @@ export const AuthForm = () => {
     <>
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <div className="w-full max-w-md p-8 space-y-6 bg-white rounded shadow-md">
+          <div className="text-center">🏴‍☠️</div>
           <div className="mb-6 text-center">
             <h1 className="text-3xl font-bold text-gray-900">
               Fullstack R.A.G.

@@ -6,7 +6,7 @@ steps:
         "-f",
         "Dockerfile",
         "-t",
-        "us-central1-docker.pkg.dev/fullstack-rag/fullstack-rag-nextjs/fullstack-rag-nextjs:latest",
+        "us-central1-docker.pkg.dev/fullstack-rag/fullstack-rag-nextjs/fullstack-rag-nextjs",
         ".",
       ]
   - name: "gcr.io/cloud-builders/docker"
