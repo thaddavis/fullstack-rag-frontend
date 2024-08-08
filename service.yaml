@@ -6,7 +6,7 @@ spec:
   template:
     spec:
       containers:
-        - image: us-central1-docker.pkg.dev/fullstack-rag/fullstack-rag-nextjs/fullstack-rag-nextjs
+        - image: us-central1-docker.pkg.dev/fullstack-rag/fullstack-rag-nextjs/fullstack-rag-nextjs:latest
           env:
           ports:
             - containerPort: 3000
