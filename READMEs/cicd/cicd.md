@@ -13,3 +13,9 @@ CICD related info
 
 - https://console.cloud.google.com/iam-admin/serviceaccounts?hl=en&project=fullstack-rag
 - https://console.cloud.google.com/iam-admin/serviceaccounts/details/101052429369532456148/keys?hl=en&project=fullstack-rag
+
+## Add permissions to Service Account
+
+- gcloud projects add-iam-policy-binding fullstack-rag \
+  --member="fullstack-rag-sa@fullstack-rag.iam.gserviceaccount.com" \
+  --role="roles/artifactregistry.writer"
