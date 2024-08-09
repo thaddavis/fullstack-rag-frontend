@@ -23,3 +23,7 @@ CICD related info
 - gcloud projects add-iam-policy-binding fullstack-rag \
   --member="serviceAccount:fullstack-rag-sa@fullstack-rag.iam.gserviceaccount.com" \
   --role="roles/run.developer"
+
+- gcloud iam service-accounts add-iam-policy-binding 370967482684-compute@developer.gserviceaccount.com \
+  --member="serviceAccount:fullstack-rag-sa@fullstack-rag.iam.gserviceaccount.com" \
+  --role="roles/iam.serviceAccountUser"
