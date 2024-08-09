@@ -82,15 +82,6 @@ jobs:
 
       # END - Docker auth and build
 
-      # - name: Deploy to Cloud Run
-      #   id: deploy
-      #   uses: google-github-actions/deploy-cloudrun@v0
-      #   with:
-      #     service: ${{ env.SERVICE }}
-      #     region: ${{ env.REGION }}
-      #     # NOTE: If using a pre-built image, update the image name here
-      #     image: ${{ env.ARTIFACTORY_URL }}:${{ github.sha }}
-
       - name: Deploy to Cloud Run
         run: |
           echo SERVICE $SERVICE
