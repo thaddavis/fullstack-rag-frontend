@@ -17,5 +17,9 @@ CICD related info
 ## Add permissions to Service Account
 
 - gcloud projects add-iam-policy-binding fullstack-rag \
-  --member="fullstack-rag-sa@fullstack-rag.iam.gserviceaccount.com" \
+  --member="serviceAccount:fullstack-rag-sa@fullstack-rag.iam.gserviceaccount.com" \
   --role="roles/artifactregistry.writer"
+
+- gcloud projects add-iam-policy-binding fullstack-rag \
+  --member="serviceAccount:fullstack-rag-sa@fullstack-rag.iam.gserviceaccount.com" \
+  --role="roles/run.developer"
