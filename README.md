@@ -16,7 +16,7 @@ bun dev
 
 ## TLDR
 
-The accompanying frontend repo for the "Fullstack R.A.G." video on COMMAND's YouTube channel
+NextJS webapp for "Fullstack R.A.G." course
 
 ## TIPS
 
