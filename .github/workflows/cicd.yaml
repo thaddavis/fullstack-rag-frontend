@@ -82,14 +82,23 @@ jobs:
 
       # END - Docker auth and build
 
+      # - name: Deploy to Cloud Run
+      #   id: deploy
+      #   uses: google-github-actions/deploy-cloudrun@v0
+      #   with:
+      #     service: ${{ env.SERVICE }}
+      #     region: ${{ env.REGION }}
+      #     # NOTE: If using a pre-built image, update the image name here
+      #     image: ${{ env.ARTIFACTORY_URL }}:${{ github.sha }}
+
       - name: Deploy to Cloud Run
-        id: deploy
-        uses: google-github-actions/deploy-cloudrun@v0
-        with:
-          service: ${{ env.SERVICE }}
-          region: ${{ env.REGION }}
-          # NOTE: If using a pre-built image, update the image name here
-          image: ${{ env.ARTIFACTORY_URL }}:${{ github.sha }}
+        run: |
+          echo SERVICE $SERVICE
+          gcloud run deploy $SERVICE \
+            --image ${{ env.ARTIFACTORY_URL }}:${{ github.sha }} \
+            --platform managed \
+            --region us-east1 \
+            --allow-unauthenticated
 
       # If required, use the Cloud Run url output in later steps
       - name: Show Output
