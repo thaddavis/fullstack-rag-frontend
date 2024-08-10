@@ -18,7 +18,7 @@ export const navigation = [
     icon: BiCheck,
   },
   {
-    name: "ReAct Agent",
+    name: "Reason + Act Agent",
     href: "/dashboard/re-act",
     icon: BiBrain,
   },
