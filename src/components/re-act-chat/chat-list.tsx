@@ -13,8 +13,6 @@ export function ChatList(P: P) {
     return null;
   }
 
-  console.log("P.messages", P.messages);
-
   return (
     <div className="relative mx-auto max-w-2xl px-4">
       {P.messages.map((message: Message, index: number) => {
