@@ -5,6 +5,7 @@ import { AuthProvider } from "@/context/auth-context";
 
 import "@/app/globals.css";
 import "react-toastify/dist/ReactToastify.css";
+import { ReactQueryClientProvider } from "@/components/shared/ReactQueryClientProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,13 +20,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <AuthProvider>
-      <html lang="en" className="h-full bg-white">
-        <body className="h-full">
-          {children}
-          <ToastContainer />
-        </body>
-      </html>
-    </AuthProvider>
+    <ReactQueryClientProvider>
+      <AuthProvider>
+        <html lang="en" className="h-full bg-white">
+          <body className="h-full">
+            {children}
+            <ToastContainer />
+          </body>
+        </html>
+      </AuthProvider>
+    </ReactQueryClientProvider>
   );
 }
