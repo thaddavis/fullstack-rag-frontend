@@ -78,6 +78,20 @@ export default function Recommendation() {
             },
             index: number
           ) => {
+            console.log(
+              "Math.round(workout.score * 100)",
+              Math.round(workout.score * 100)
+            );
+
+            const scoreColor =
+              Math.round(workout.score * 100) > 80
+                ? "text-green-900"
+                : Math.round(workout.score * 100) > 60
+                ? "text-green-600"
+                : Math.round(workout.score * 100) > 40
+                ? "text-orange-400"
+                : "text-red-600";
+
             return (
               <div
                 key={index}
@@ -88,11 +102,7 @@ export default function Recommendation() {
                     <h5 className="text-lg font-bold">
                       {workout.metadata.title}
                     </h5>
-                    <span
-                      className={`text-${
-                        Math.round(workout.score * 100) > 50 ? "green" : "red"
-                      }-800`}
-                    >
+                    <span className={scoreColor}>
                       {Math.round(workout.score * 100)}%
                     </span>
                   </div>
