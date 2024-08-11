@@ -15,13 +15,9 @@ import { deleteWorkout } from "@/services/deleteWorkout";
 export default function Page() {
   const { user, logout } = useContext(AuthContext);
   const [workouts, setWorkouts] = useState<any[]>([]);
-  const [routines, setRoutines] = useState<any[]>([]);
   const [fetchCount, setFetchCount] = useState(0); // Used to trigger a re-fetch of data
   const [workoutName, setWorkoutName] = useState("");
   const [workoutDescription, setWorkoutDescription] = useState("");
-  const [routineName, setRoutineName] = useState("");
-  const [routineDescription, setRoutineDescription] = useState("");
-  const [selectedWorkouts, setSelectedWorkouts] = useState<any[]>([]);
   const [accordionState, setAccordionState] = useState({
     createWorkout: true,
     createRoutine: false,

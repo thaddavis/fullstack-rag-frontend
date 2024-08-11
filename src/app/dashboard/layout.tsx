@@ -132,8 +132,8 @@ export default function Layout({
                         ))}
                       </ul>
                     </li>
-                    <ul className="mt-auto">
-                      <li className="mt-auto">
+                    <ul className="mt-auto space-y-1">
+                      <li>
                         <span
                           onClick={() => {
                             router.push("/dashboard/settings");
@@ -153,7 +153,7 @@ export default function Layout({
                           Settings
                         </span>
                       </li>
-                      <li className="mt-auto">
+                      <li>
                         <span
                           onClick={logout}
                           className={classNames(
@@ -223,8 +223,8 @@ export default function Layout({
                   </ul>
                 </li>
               </ul>
-              <ul>
-                <li className="mt-auto">
+              <ul className="space-y-1">
+                <li>
                   <Link
                     href="/dashboard/settings"
                     className={classNames(
@@ -241,7 +241,7 @@ export default function Layout({
                     Settings
                   </Link>
                 </li>
-                <li className="mt-auto">
+                <li>
                   <span
                     onClick={logout}
                     className={classNames(
