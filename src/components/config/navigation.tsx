@@ -5,6 +5,7 @@ import {
   BiSolidStar,
   BiX,
 } from "react-icons/bi";
+import { GoFileMedia } from "react-icons/go";
 
 export const navigation = [
   {
@@ -31,5 +32,10 @@ export const navigation = [
     name: "Anomaly Detection",
     href: "/dashboard/anomaly-detection",
     icon: BiSolidAlarmExclamation,
+  },
+  {
+    name: "Multi-Modal R.A.G.",
+    href: "/dashboard/multi-modal",
+    icon: GoFileMedia,
   },
 ];
