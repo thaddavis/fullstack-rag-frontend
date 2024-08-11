@@ -23,7 +23,7 @@ export const navigation = [
     icon: BiBrain,
   },
   {
-    name: "Recommendations",
+    name: "Workout Recommendations",
     href: "/dashboard/recommendations",
     icon: BiSolidStar,
   },

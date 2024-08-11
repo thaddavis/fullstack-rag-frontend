@@ -3,12 +3,16 @@
 import React from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import { WorkoutCard } from "@/components/shared/workout-card";
+import { InfiniteScroller } from "@/components/shared/InfiniteScroller";
 
 export default function Recommendations() {
   const [searchQuery, setSearchQuery] = useState("");
 
   // @ts-ignore
   const fetchWorkoutRecommendations = async ({ pageParam }) => {
+    console.log("pageParam", pageParam);
+
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/recommendations/workouts?cursor=` +
         pageParam,
@@ -23,6 +27,7 @@ export default function Recommendations() {
         }),
       }
     );
+
     return res.json();
   };
 
@@ -38,7 +43,14 @@ export default function Recommendations() {
     queryKey: ["recommendations"],
     queryFn: fetchWorkoutRecommendations,
     initialPageParam: 0,
-    getNextPageParam: (lastPage, pages) => lastPage.nextCursor,
+    getNextPageParam: (lastPage) => {
+      console.log("lastPage", lastPage);
+      if (lastPage.cursor >= 40) {
+        return null;
+      } else {
+        return lastPage.cursor;
+      }
+    },
   });
 
   const handleKeyDown = (e: { key: string }) => {
@@ -47,31 +59,50 @@ export default function Recommendations() {
     }
   };
 
+  const handleFetchNextPage = () => {
+    if ((data?.pages?.length || 0) >= 4) {
+      return; // Stop fetching more pages if the maximum limit is reached
+    }
+    fetchNextPage();
+  };
+
+  console.log("data", data);
+  console.log("hasNextPage", hasNextPage);
+
   return (
     <>
       <div className="flex flex-col items-center space-y-4">
-        <div className="mx-auto max-w-2xl px-4 ">
-          <div className="flex flex-col gap-2 rounded-lg border bg-background p-8 shadow-sm">
-            <h1 className="text-center text-5xl font-semibold leading-12">
-              Recommendations 🏋️‍♂️
-            </h1>
+        <div className="w-full">
+          <label
+            htmlFor="search"
+            className="block text-sm font-medium leading-6 text-gray-900"
+          >
+            Search
+          </label>
+          <div className="relative mt-2">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="What are you looking for?"
+              className="peer block w-full border-0 bg-gray-50 py-1.5 text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-x-0 bottom-0 border-t border-gray-300 peer-focus:border-t-2 peer-focus:border-indigo-600"
+            />
           </div>
         </div>
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Search..."
-          className="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
-        />
-        {status === "pending" ? (
-          <p>Loading...</p>
-        ) : status === "error" ? (
-          <p>Error: {error.message}</p>
-        ) : (
+
+        <InfiniteScroller
+          fetchNextPage={handleFetchNextPage}
+          hasNextPage={hasNextPage}
+          loadingMessage={<p>Loading...</p>}
+          endingMessage={<p>End of stream</p>}
+        >
           <>
-            {data?.pages.map((group, i) => (
+            {data?.pages?.map((group, i) => (
               <React.Fragment key={i}>
                 {group?.data?.map(
                   (recommendation: {
@@ -79,27 +110,17 @@ export default function Recommendations() {
                     name: string;
                     description: string;
                   }) => (
-                    <p key={recommendation.id}>{recommendation.name}</p>
+                    <WorkoutCard
+                      key={recommendation.id}
+                      name={recommendation.name}
+                      description={recommendation.description}
+                    />
                   )
                 )}
               </React.Fragment>
             ))}
-            <div>
-              <button
-                onClick={() => fetchNextPage()}
-                disabled={!hasNextPage || isFetchingNextPage}
-              >
-                {isFetchingNextPage
-                  ? "Loading more..."
-                  : hasNextPage
-                  ? "Load More"
-                  : "Nothing more to load"}
-              </button>
-            </div>
-
-            {isFetching && !isFetchingNextPage ? "Fetching..." : null}
           </>
-        )}
+        </InfiniteScroller>
       </div>
     </>
   );
