@@ -3,6 +3,7 @@ import React from "react";
 interface InfiniteScrollProps extends React.HTMLAttributes<HTMLDivElement> {
   fetchNextPage: () => void;
   hasNextPage: boolean;
+  isFetching: boolean;
   loadingMessage: React.ReactNode;
   endingMessage: React.ReactNode;
 }
@@ -17,6 +18,7 @@ export const InfiniteScroller = React.forwardRef<
       fetchNextPage,
       hasNextPage,
       endingMessage,
+      isFetching,
       loadingMessage,
       children,
       ...props
@@ -52,7 +54,7 @@ export const InfiniteScroller = React.forwardRef<
         {children}
         <div ref={observerTarget} />
         <div className="my-2 text-center">
-          {hasNextPage ? loadingMessage : endingMessage}
+          {hasNextPage && isFetching ? loadingMessage : endingMessage}
         </div>
       </div>
     );

@@ -3,6 +3,7 @@
 import AuthContext from "@/context/auth-context";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState(true);
@@ -40,7 +41,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 
         if (resp.status === 401) logout();
       } catch (e) {
-        console.error("ProtectedRoute: fetch error:", e);
+        toast.error("Error connecting to the server");
       }
     }
 

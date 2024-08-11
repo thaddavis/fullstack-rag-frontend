@@ -6,7 +6,7 @@ import { useState } from "react";
 import { WorkoutCard } from "@/components/shared/workout-card";
 import { InfiniteScroller } from "@/components/shared/InfiniteScroller";
 
-export default function Recommendations() {
+export default function RecommendationsScroll() {
   const [searchQuery, setSearchQuery] = useState("");
 
   // @ts-ignore
@@ -23,7 +23,7 @@ export default function Recommendations() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          query: searchQuery,
+          text: searchQuery,
         }),
       }
     );
@@ -69,6 +69,10 @@ export default function Recommendations() {
   console.log("data", data);
   console.log("hasNextPage", hasNextPage);
 
+  if (status === "error") {
+    return <div>Error Occurred</div>;
+  }
+
   return (
     <>
       <div className="flex flex-col items-center space-y-4">
@@ -90,7 +94,7 @@ export default function Recommendations() {
             />
             <div
               aria-hidden="true"
-              className="absolute inset-x-0 bottom-0 border-t border-gray-300 peer-focus:border-t-2 peer-focus:border-indigo-600"
+              className="absolute inset-x-0 bottom-0 border-t border-gray-300 peer-focus:border-t-2 peer-focus:border-blue-600"
             />
           </div>
         </div>
@@ -98,8 +102,9 @@ export default function Recommendations() {
         <InfiniteScroller
           fetchNextPage={handleFetchNextPage}
           hasNextPage={hasNextPage}
+          isFetching={isFetching}
           loadingMessage={<p>Loading...</p>}
-          endingMessage={<p>End of stream</p>}
+          endingMessage={<p></p>}
         >
           <>
             {data?.pages?.map((group, i) => (

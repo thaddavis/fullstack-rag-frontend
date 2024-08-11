@@ -1,5 +1,5 @@
 import React from "react";
-import Recommendations from "./recommendations";
+import Recommendations from "./recommendation";
 import ProtectedRoute from "@/components/shared/protected-route";
 
 export default async function Page() {
