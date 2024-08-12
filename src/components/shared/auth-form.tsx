@@ -9,18 +9,18 @@ export const AuthForm = () => {
   const { login } = useContext(AuthContext);
   const [isLogin, setIsLogin] = useState(true);
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   // const [username, setUsername] = useState("tad@cmdlabs.io");
   // const [password, setPassword] = useState("paparara1423#");
 
-  const [registerUsername, setRegisterUsername] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
 
   const handleLogin = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    login(username, password);
+    login(email, password);
   };
 
   const handleRegister = async (e: { preventDefault: () => void }) => {
@@ -35,18 +35,19 @@ export const AuthForm = () => {
       //     password: registerPassword,
       //   }
       // );
+
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: registerUsername,
+          email: registerEmail,
           password: registerPassword,
         }),
       });
 
-      login(registerUsername, registerPassword);
+      login(registerEmail, registerPassword);
     } catch (error) {
       console.error("Failed to register user:", error);
       toast.error("Registration Failed");
@@ -76,21 +77,21 @@ export const AuthForm = () => {
           >
             <div>
               <label
-                htmlFor="username"
+                htmlFor="email"
                 className="block text-sm font-medium text-gray-700"
               >
-                Username
+                Email
               </label>
               <input
                 type="email"
-                id="username"
-                name="username"
-                placeholder="Enter username"
-                value={isLogin ? username : registerUsername}
+                id="email"
+                name="email"
+                placeholder="Enter email"
+                value={isLogin ? email : registerEmail}
                 onChange={
                   isLogin
-                    ? (e) => setUsername(e.target.value)
-                    : (e) => setRegisterUsername(e.target.value)
+                    ? (e) => setEmail(e.target.value)
+                    : (e) => setRegisterEmail(e.target.value)
                 }
                 required
                 className="w-full px-3 py-2 mt-1 border border-slate-500 rounded shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
