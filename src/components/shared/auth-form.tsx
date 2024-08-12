@@ -12,9 +12,6 @@ export const AuthForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const [username, setUsername] = useState("tad@cmdlabs.io");
-  // const [password, setPassword] = useState("paparara1423#");
-
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
 
@@ -26,7 +23,7 @@ export const AuthForm = () => {
   const handleRegister = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try {
-      console.log(">>> API URL:", process.env.NEXT_PUBLIC_API_URL);
+      console.log("-->-->--> API URL:", process.env.NEXT_PUBLIC_API_URL);
 
       // const response = await axios.post(
       //   `${process.env.NEXT_PUBLIC_API_URL}/auth`,

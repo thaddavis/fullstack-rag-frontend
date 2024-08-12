@@ -40,12 +40,12 @@ export default function Layout({
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const userNavigation = [
-    {
-      name: "Settings",
-      onClick: () => {
-        router.push("/dashboard/settings");
-      },
-    },
+    // {
+    //   name: "Settings",
+    //   onClick: () => {
+    //     router.push("/dashboard/settings");
+    //   },
+    // },
     {
       name: "Sign out",
       onClick: () => {
@@ -133,7 +133,7 @@ export default function Layout({
                       </ul>
                     </li>
                     <ul className="mt-auto space-y-1">
-                      <li>
+                      {/* <li>
                         <span
                           onClick={() => {
                             router.push("/dashboard/settings");
@@ -152,7 +152,7 @@ export default function Layout({
                           />
                           Settings
                         </span>
-                      </li>
+                      </li> */}
                       <li>
                         <span
                           onClick={logout}
@@ -224,7 +224,7 @@ export default function Layout({
                 </li>
               </ul>
               <ul className="space-y-1">
-                <li>
+                {/* <li>
                   <Link
                     href="/dashboard/settings"
                     className={classNames(
@@ -240,7 +240,7 @@ export default function Layout({
                     />
                     Settings
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <span
                     onClick={logout}

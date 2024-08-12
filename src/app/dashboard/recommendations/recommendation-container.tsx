@@ -4,7 +4,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
-export default function Recommendation() {
+export function RecommendationContainer() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isQueryEnabled, setIsQueryEnabled] = useState(false);
 
@@ -15,6 +15,7 @@ export default function Recommendation() {
         `${process.env.NEXT_PUBLIC_API_URL}/recommendations/workouts`,
         {
           method: "POST",
+          credentials: "include",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
             "Content-Type": "application/json",
@@ -37,7 +38,6 @@ export default function Recommendation() {
     }
   };
 
-  // if (isPending) return "Loading...";
   if (error) return "An error has occurred: " + error.message;
 
   return (

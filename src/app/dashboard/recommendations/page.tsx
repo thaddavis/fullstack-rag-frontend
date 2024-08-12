@@ -1,13 +1,12 @@
-import React from "react";
-import Recommendations from "./recommendation";
-import ProtectedRoute from "@/components/shared/protected-route";
+import { redirect } from "next/navigation";
+import { RecommendationContainer } from "./recommendation-container";
+import { protectedPageGuard } from "@/components/shared/utils/validate-token";
 
 export default async function Page() {
-  return (
-    <ProtectedRoute>
-      <div className="group w-full overflow-auto pl-0 peer-[[data-state=open]]:lg:pl-[250px] peer-[[data-state=open]]:xl:pl-[300px]">
-        <Recommendations />
-      </div>
-    </ProtectedRoute>
-  );
+  try {
+    await protectedPageGuard();
+    return <RecommendationContainer />;
+  } catch (error) {
+    return redirect("/");
+  }
 }

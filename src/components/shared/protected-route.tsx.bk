@@ -31,10 +31,15 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
           `${process.env.NEXT_PUBLIC_API_URL}/auth/validate-token`,
           {
             method: "GET",
+            // Add the following line to make fetch throw an error
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
           }
         );
 
-        if (!resp.ok) logout();
+        if (resp.status === 401) logout();
       } catch (e) {
         toast.error("Error connecting to the server");
       }
