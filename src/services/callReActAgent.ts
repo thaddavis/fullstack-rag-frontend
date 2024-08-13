@@ -137,6 +137,13 @@ function dispatchEventToState(
     });
   } else if (parsedChunk["event"] === "on_tool_end") {
     dispatch({
+      type: "EDIT_MESSAGE",
+      payload: {
+        id: aiMessageId,
+        content: (accMessage.content += "\n"),
+      },
+    });
+    dispatch({
       type: "SET_CURRENT_TOOL",
       payload: "",
     });
