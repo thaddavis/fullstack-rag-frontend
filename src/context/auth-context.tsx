@@ -31,9 +31,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
       );
 
-      console.log("redirecting to dashboard");
+      await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/check-cookies`, {
+        withCredentials: true,
+      });
 
-      debugger;
+      console.log("redirecting to dashboard");
       router.push("/dashboard");
     } catch (error) {
       toast.error("Login Failed");
