@@ -31,6 +31,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
       );
 
+      console.log("redirecting to dashboard");
       router.push("/dashboard");
     } catch (error) {
       toast.error("Login Failed");
