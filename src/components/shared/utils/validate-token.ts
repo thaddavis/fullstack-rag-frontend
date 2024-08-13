@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 
 export async function validateToken(token: string) {
   console.log("--- validateToken ---");
+  console.log(`${process.env.NEXT_PUBLIC_API_URL}`);
 
   const resp = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/auth/validate-token`,
