@@ -49,7 +49,7 @@ export const InfiniteScroller = React.forwardRef<
         ref={ref}
         {...props}
         style={{ overflowAnchor: "none" }}
-        className="space-y-4"
+        // className="space-y-4"
       >
         {children}
         <div ref={observerTarget} />

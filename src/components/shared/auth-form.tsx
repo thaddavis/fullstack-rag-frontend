@@ -16,6 +16,7 @@ export const AuthForm = () => {
   const [registerPassword, setRegisterPassword] = useState("");
 
   const handleLogin = (e: { preventDefault: () => void }) => {
+    console.log("handleLogin");
     e.preventDefault();
     login(email, password);
   };
