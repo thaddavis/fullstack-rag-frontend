@@ -119,7 +119,7 @@ export function AnomalyDetectionContainer() {
                   scope="col"
                   className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                 >
-                  Suspicious?
+                  Score
                 </th>
               </tr>
             </thead>
@@ -132,7 +132,7 @@ export function AnomalyDetectionContainer() {
                       account_id: number;
                       ip_address: string;
                       created_at: string;
-                      is_suspicious: boolean;
+                      similarity_score: number;
                     }) => (
                       <tr key={login.id}>
                         <td className="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-0">
@@ -155,7 +155,8 @@ export function AnomalyDetectionContainer() {
                           {login.created_at}
                         </td>
                         <td className="px-3 py-4 text-sm text-gray-500">
-                          {login.is_suspicious ? "🏴‍☠️" : "No"}
+                          {login.similarity_score}&nbsp;
+                          {login.similarity_score < 0.6 ? "🏴‍☠️" : ""}
                         </td>
                       </tr>
                     )
