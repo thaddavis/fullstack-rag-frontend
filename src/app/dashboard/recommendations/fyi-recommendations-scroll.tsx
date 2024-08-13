@@ -3,8 +3,8 @@
 import React from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { WorkoutCard } from "@/components/shared/workout-card";
-import { InfiniteScroller } from "@/components/shared/InfiniteScroller";
+import { WorkoutCard } from "@/components/shared/ui/workout-card";
+import { InfiniteScroller } from "@/components/shared/ui/infinite-scroller";
 
 export default function RecommendationsScroll() {
   const [searchQuery, setSearchQuery] = useState("");

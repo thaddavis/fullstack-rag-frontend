@@ -2,11 +2,10 @@
 
 import * as React from "react";
 
-import { ChatDispatchContext } from "@/app/dashboard/re-act/ChatSessionContext";
+import { ChatDispatchContext } from "@/app/dashboard/re-act/chat-session-context";
 import { useEnterSubmit } from "@/lib/hooks/use-enter-submit";
 import { nanoid } from "@/lib/utils";
 import { callReActAgent } from "@/services/callReActAgent";
-import { useRouter } from "next/navigation";
 
 export function PromptForm({
   input,
@@ -17,7 +16,6 @@ export function PromptForm({
   setInput: (value: string) => void;
   sessionId: string;
 }) {
-  const router = useRouter();
   const { formRef, onKeyDown } = useEnterSubmit();
   const inputRef = React.useRef<HTMLTextAreaElement>(null);
 

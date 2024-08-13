@@ -1,6 +1,6 @@
 "use client";
 
-import { ChatContext } from "@/app/dashboard/re-act/ChatSessionContext";
+import { ChatContext } from "@/app/dashboard/re-act/chat-session-context";
 import { ChatList } from "@/components/re-act-chat/chat-list";
 import { ChatPanel } from "@/components/re-act-chat/chat-panel";
 import { EmptyScreen } from "@/components/re-act-chat/empty-screen";
