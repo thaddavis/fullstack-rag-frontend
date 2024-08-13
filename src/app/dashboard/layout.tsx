@@ -14,7 +14,6 @@ import {
 import {
   ArrowLeftStartOnRectangleIcon,
   Bars3Icon,
-  Cog6ToothIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";

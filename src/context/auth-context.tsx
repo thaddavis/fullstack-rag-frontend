@@ -22,11 +22,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
 
   useEffect(() => {
-    // Rehydrate user from localStorage
-    // const token = localStorage.getItem("token");
-    // if (token) {
-    // axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    // Assuming you have an endpoint to validate the token and get user info
     axios
       .get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate-token`)
       .then((response) => {
@@ -34,9 +29,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setUser(response.data);
       })
       .catch((error) => {
-        console.error("Rehydration Failed:", error);
-        // Optionally, remove the token if invalid
-        // localStorage.removeItem("token");
         setUser(undefined);
       });
     // }
@@ -49,7 +41,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       formData.append("password", password);
 
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/auth/token`,
+        `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
         formData,
         {
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -69,9 +61,15 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  const logout = () => {
-    setUser(undefined);
-    localStorage.removeItem("token");
+  const logout = async () => {
+    // setUser(undefined);
+    // localStorage.removeItem("token");
+
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`, {
+      method: "POST",
+      credentials: "include",
+    });
+
     router.push("/");
   };
 
