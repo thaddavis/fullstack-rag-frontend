@@ -8,6 +8,7 @@ export async function deleteRoutine(id: number) {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
+      credentials: "include",
     }
   );
 

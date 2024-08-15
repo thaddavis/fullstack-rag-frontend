@@ -18,6 +18,7 @@ export async function callNoRagAgent(
         sessionId: sessionId,
         content: prompt,
       }),
+      credentials: "include",
     }
   );
 

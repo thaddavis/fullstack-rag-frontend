@@ -18,6 +18,7 @@ export async function callReActAgent(
         sessionId: sessionId,
         content: prompt,
       }),
+      credentials: "include",
     }
   );
 

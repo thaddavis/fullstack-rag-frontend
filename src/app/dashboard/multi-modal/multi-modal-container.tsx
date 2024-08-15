@@ -4,15 +4,15 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
-export function RecommendationContainer() {
+export function MultiModalContainer() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isQueryEnabled, setIsQueryEnabled] = useState(false);
 
   const { isPending, error, data, isFetching, refetch } = useQuery({
-    queryKey: ["recommendations/workouts"],
+    queryKey: ["media-assets/query"],
     queryFn: async () => {
       const resp = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/recommendations/workouts`,
+        `${process.env.NEXT_PUBLIC_API_URL}/multi-modal/media-assets/query`,
         {
           method: "POST",
           credentials: "include",
@@ -46,7 +46,7 @@ export function RecommendationContainer() {
           htmlFor="search"
           className="block text-sm font-medium leading-6 text-gray-900"
         >
-          Search workouts
+          Search media assets
         </label>
         <div className="relative mt-2">
           <input
