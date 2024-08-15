@@ -3,6 +3,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import Image from "next/image";
 
 export function MultiModalContainer() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -65,29 +66,32 @@ export function MultiModalContainer() {
       </div>
 
       <div className="w-full grid grid-cols-1 gap-4 mt-4 sm:grid-cols-3 lg:grid-cols-3">
-        {data?.recommendations?.map(
+        {data?.results?.map(
           (
-            workout: {
-              metadata: {
-                title: string;
-                description: string;
-                created_by: string;
-              };
-              score: number;
-            },
+            result: any,
+            // workout: {
+            //   metadata: {
+            //     title: string;
+            //     description: string;
+            //     created_by: string;
+            //   };
+            //   score: number;
+            // },
             index: number
           ) => {
-            console.log(
-              "Math.round(workout.score * 100)",
-              Math.round(workout.score * 100)
-            );
+            // console.log(
+            //   "Math.round(workout.score * 100)",
+            //   Math.round(workout.score * 100)
+            // );
+
+            console.log("result", result);
 
             const scoreColor =
-              Math.round(workout.score * 100) > 80
+              Math.round(result.score * 100) > 80
                 ? "text-green-900"
-                : Math.round(workout.score * 100) > 60
+                : Math.round(result.score * 100) > 60
                 ? "text-green-600"
-                : Math.round(workout.score * 100) > 40
+                : Math.round(result.score * 100) > 40
                 ? "text-orange-400"
                 : "text-red-600";
 
@@ -99,17 +103,27 @@ export function MultiModalContainer() {
                 <div>
                   <div className="flex justify-between">
                     <h5 className="text-lg font-bold">
-                      {workout.metadata.title}
+                      {result.metadata.modality}
                     </h5>
                     <span className={scoreColor}>
-                      {Math.round(workout.score * 100)}%
+                      {Math.round(result.score * 100)}%
                     </span>
                   </div>
-                  <p className="text-sm">{workout.metadata.description}</p>
+                  {result?.metadata?.modality === "vision" ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      width={"auto"}
+                      src={`https://media.kalygo.io/multi-modal/images/${result.metadata.filename}`}
+                      alt="media"
+                    ></img>
+                  ) : (
+                    <>audio</>
+                  )}
+                  <p className="text-sm">{result?.metadata?.filename}</p>
                 </div>
                 <div className="mt-4 text-right">
                   <small>
-                    <b>Created by:</b> {workout.metadata.created_by}
+                    <b>Created by:</b> r@pirate.ai
                   </small>
                 </div>
               </div>
@@ -118,7 +132,7 @@ export function MultiModalContainer() {
         )}
       </div>
       <div className="text-center">
-        <strong>🏋️‍♂️</strong>
+        <strong>📷 🎵</strong>
         <div>{isFetching ? "Updating..." : ""}</div>
       </div>
     </div>
