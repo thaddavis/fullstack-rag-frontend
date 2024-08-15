@@ -117,7 +117,13 @@ export function MultiModalContainer() {
                       alt="media"
                     ></img>
                   ) : (
-                    <>audio</>
+                    <audio controls style={{ width: "100%", maxWidth: "100%" }}>
+                      <source
+                        src={`https://media.kalygo.io/multi-modal/audio/${result.metadata.filename}`}
+                        type="audio/wav"
+                      />
+                      Your browser does not support the audio element.
+                    </audio>
                   )}
                   <p className="text-sm">{result?.metadata?.filename}</p>
                 </div>
