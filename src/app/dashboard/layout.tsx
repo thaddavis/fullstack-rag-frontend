@@ -90,7 +90,7 @@ export default function Layout({
                 </div>
               </TransitionChild>
               {/* Sidebar component, swap this element with another sidebar if you like */}
-              <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-blue-600 px-6 pb-4">
+              <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-blue-600 px-6 pb-4 cursor-pointer">
                 <div
                   className="flex h-16 shrink-0 items-center"
                   onClick={() => {
