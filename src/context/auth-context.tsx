@@ -31,9 +31,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
       );
 
-      await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/check-cookies`, {
-        withCredentials: true,
-      });
+      // await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/check-cookies`, {
+      //   withCredentials: true,
+      // });
 
       console.log("redirecting to dashboard");
       router.push("/dashboard");
