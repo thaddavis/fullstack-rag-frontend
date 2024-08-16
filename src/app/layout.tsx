@@ -10,7 +10,7 @@ import { ReactQueryClientProvider } from "@/components/shared/ReactQueryClientPr
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Fullstack R.A.G.",
+  title: "Fullstack Vectors",
   description: "Made with ❤️ by COMMAND",
 };
 

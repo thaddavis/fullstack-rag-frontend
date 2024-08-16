@@ -9,32 +9,32 @@ import { GoFileMedia } from "react-icons/go";
 
 export const navigation = [
   {
-    name: "Agent without R.A.G.",
+    name: "1) Agent without R.A.G.",
     href: "/dashboard/no-rag",
     icon: BiX,
   },
   {
-    name: "Agent with R.A.G.",
+    name: "2) Agent with R.A.G.",
     href: "/dashboard/rag",
     icon: BiCheck,
   },
   {
-    name: "Reason + Act Agent",
+    name: "3) Reason + Act Agent",
     href: "/dashboard/re-act",
     icon: BiBrain,
   },
   {
-    name: "Workout Recommendations",
+    name: "4) Recommendations",
     href: "/dashboard/recommendations",
     icon: BiSolidStar,
   },
   {
-    name: "Anomaly Detection",
+    name: "5) Anomaly Detection",
     href: "/dashboard/anomaly-detection",
     icon: BiSolidAlarmExclamation,
   },
   {
-    name: "Multi-Modal R.A.G.",
+    name: "6) Multi-Modal R.A.G.",
     href: "/dashboard/multi-modal",
     icon: GoFileMedia,
   },
