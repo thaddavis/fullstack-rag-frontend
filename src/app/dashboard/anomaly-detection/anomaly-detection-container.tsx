@@ -48,7 +48,7 @@ export function AnomalyDetectionContainer() {
     initialPageParam: 0,
     getNextPageParam: (lastPage) => {
       console.log("lastPage", lastPage);
-      if (lastPage.cursor >= 40) {
+      if (lastPage.cursor >= 160) {
         return null;
       } else {
         return lastPage.cursor;
@@ -126,7 +126,7 @@ export function AnomalyDetectionContainer() {
             <tbody className="divide-y divide-gray-200 bg-white">
               {data?.pages?.map((group, i) => (
                 <React.Fragment key={i}>
-                  {group?.map(
+                  {group?.results?.map(
                     (login: {
                       id: number;
                       account_id: number;
