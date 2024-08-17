@@ -6,16 +6,6 @@ import { useState } from "react";
 import { WorkoutCard } from "@/components/shared/ui/workout-card";
 import { InfiniteScroller } from "@/components/shared/ui/infinite-scroller";
 
-const people = [
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  // More people...
-];
-
 export function AnomalyDetectionContainer() {
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -156,7 +146,7 @@ export function AnomalyDetectionContainer() {
                         </td>
                         <td className="px-3 py-4 text-sm text-gray-500">
                           {login.similarity_score}&nbsp;
-                          {login.similarity_score < 0.6 ? "🏴‍☠️" : ""}
+                          {login.similarity_score < 0.8 ? "🏴‍☠️" : ""}
                         </td>
                       </tr>
                     )
