@@ -34,7 +34,7 @@ export const navigation = [
     icon: BiSolidAlarmExclamation,
   },
   {
-    name: "6) Multi-Modal R.A.G.",
+    name: "6) Multi-Modal Search",
     href: "/dashboard/multi-modal",
     icon: GoFileMedia,
   },
