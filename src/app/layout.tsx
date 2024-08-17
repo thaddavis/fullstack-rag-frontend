@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Fullstack Vectors",
-  description: "Made with ❤️ by COMMAND",
+  description: "Made with 🏴‍☠️ in Miami",
 };
 
 export default function RootLayout({
