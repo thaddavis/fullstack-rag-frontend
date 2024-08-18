@@ -129,7 +129,7 @@ export function MultiModalContainer() {
                 </div>
                 <div className="mt-4 text-right">
                   <small>
-                    <b>Created by:</b> r@pirate.ai
+                    <b>Created by:</b> fairuse@fairuse.com
                   </small>
                 </div>
               </div>
